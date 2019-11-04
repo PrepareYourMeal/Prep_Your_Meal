@@ -47,9 +47,9 @@ class Topbar extends Component {
               </li>
 
               {/*Logout*/}
-              <li className="dropdown notification-list"> 
+              {/* <li className="dropdown notification-list"> 
               <Link className="btn btn-link nav-link right-bar-toggle waves-effect waves-light" to="/logout"><i className="fe-log-out noti-icon"></i></Link>
-              </li>
+              </li> */}
             </ul>
 
             {/*Logo*/}

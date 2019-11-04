@@ -21,13 +21,13 @@ app.use(express.json({ extended: false }));
 app.use(cors())
 
 //serve react application during production
-// console.log("App enviornment: " + config.get('NODE_ENV'));
-// if(config.get('NODE_ENV') == "production"){
-//     app.use('/', express.static('client/build'));
-// }
-// else{
-//     app.get('/', (req, res) => res.send('API Running'));
-// }
+console.log("App enviornment: " + config.get('NODE_ENV'));
+if(config.get('NODE_ENV') == "production"){
+    app.use('/', express.static('client/build'));
+}
+else{
+    app.get('/', (req, res) => res.send('API Running'));
+}
 
 //Define Routes
 app.use('/api/users', users);

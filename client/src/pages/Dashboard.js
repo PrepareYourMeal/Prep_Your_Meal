@@ -10,9 +10,9 @@ class DefaultDashboard extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            user: getLoggedInUser()
-        };
+        // this.state = {
+        //     user: getLoggedInUser()
+        // };
     }
 
     render() {

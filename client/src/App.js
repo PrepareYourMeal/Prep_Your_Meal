@@ -51,10 +51,6 @@ class App extends Component {
     return isUserAuthenticated() ? AuthLayout : NonAuthLayout;
   }
 
-  state = {
-    recipes: []
-  }
-
 
   render() {
     return (
@@ -67,7 +63,7 @@ class App extends Component {
                 key={index}
                 path={route.path}
                 exact={route.exact}
-                roles={route.roles}
+                roles={route.roles} //todo
                 component={withLayout(props => {
                   const Layout = this.getLayout();
                   return (
