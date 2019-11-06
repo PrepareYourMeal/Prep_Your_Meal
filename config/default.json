@@ -1,0 +1,5 @@
+{
+    "mongoURI": "mongodb+srv://sadiestokes:ssw690mealprep@mealplanner690-if2ak.mongodb.net/mealplanner?retryWrites=true&w=majority",
+    "jwtSecret": "mySecretToken",
+    "NODE_ENV": "development"
+}
