@@ -1,7 +1,8 @@
 import React, { Component, Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Provider, connect } from 'react-redux';
 import Loadable from 'react-loadable';
+import store from './store';
 
 import { routes } from './routes';
 
@@ -55,30 +56,34 @@ class App extends Component {
   render() {
     return (
       // rendering the router with layout
-      <BrowserRouter>
-        <React.Fragment>
-          {routes.map((route, index) => {
-            return (
-              <route.route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                roles={route.roles} //todo
-                component={withLayout(props => {
-                  const Layout = this.getLayout();
-                  return (
-                    <Suspense fallback={loading()}>
-                      <Layout {...props} title={route.title}>
-                        <route.component {...props} />
-                      </Layout>
-                    </Suspense>
-                  );
-                })}
-              />
-            );
-          })}
-        </React.Fragment>
-      </BrowserRouter>
+
+      <Provider store={store}>
+        <BrowserRouter>
+          <React.Fragment>
+            {routes.map((route, index) => {
+              return (
+                <route.route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  roles={route.roles} //todo
+                  component={withLayout(props => {
+                    const Layout = this.getLayout();
+                    return (
+                      <Suspense fallback={loading()}>
+                        <Layout {...props} title={route.title}>
+                          <route.component {...props} />
+                        </Layout>
+                      </Suspense>
+                    );
+                  })}
+                />
+              );
+            })}
+          </React.Fragment>
+        </BrowserRouter>
+      </Provider>
+      
     );
   }
 }

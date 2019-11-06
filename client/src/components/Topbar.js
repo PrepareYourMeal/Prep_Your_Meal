@@ -3,18 +3,28 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
+import { setCurrentUser } from "../actions/authActions";
+
 import logoSm from '../assets/images/logos/Logo_v1.png';
 import logo from '../assets/images/logos/Logo_v1.png';
 
+import './dash.css';
+
 
 class Topbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {};
+  // }
+
+  async componentDidMount() {
+    await this.props.setCurrentUser();
   }
 
 
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+
     return (
       <React.Fragment>
         <div className="navbar-custom">
@@ -46,6 +56,32 @@ class Topbar extends Component {
                 </form>
               </li>
 
+              <li>
+              {isAuthenticated ? (
+                  <div>
+                    <br />
+                    <h2 className="display-5 mb-4">Welcome, {user.name}</h2>
+                  </div>
+                ) : (
+                  <div className="google-btn-container">
+                    <a href="/auth/google">
+                      <div className="google-btn">
+                        <div className="google-icon-wrapper">
+                          <img
+                            className="google-icon"
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                            alt="signin"
+                          />
+                        </div>
+                        <p className="btn-text">
+                          <b>Log in with Google</b>
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+                )}
+              </li>
+
               {/*Logout*/}
               {/* <li className="dropdown notification-list"> 
               <Link className="btn btn-link nav-link right-bar-toggle waves-effect waves-light" to="/logout"><i className="fe-log-out noti-icon"></i></Link>
@@ -70,5 +106,9 @@ class Topbar extends Component {
   }
 }
 
-export default connect()(Topbar);
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { setCurrentUser })(Topbar);
 
