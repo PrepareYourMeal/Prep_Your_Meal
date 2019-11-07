@@ -76,7 +76,7 @@ class Login extends Component {
                                             {this.props.loading && <Loader />}
 
                                             <div className="text-center mb-4">
-                                                <h4 className="text-uppercase mt-0">Sign In</h4>
+                                                <h4 className="text-uppercase mt-0">Sign In - Review app Test</h4>
                                             </div>
 
                                             {this.props.error && <Alert color="danger" isOpen={this.props.error ? true : false}>
