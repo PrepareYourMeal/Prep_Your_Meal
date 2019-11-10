@@ -1,1 +1,5 @@
-config
+config/*
+!config/custom-environment-variables.json
+!config/default.json.example
+
+node_modules/

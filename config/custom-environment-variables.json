@@ -1,0 +1,5 @@
+{
+    "mongoURI": "CONFIG__mongoURI",
+    "jwtSecret": "CONFIG__jwtSecret",
+    "NODE_ENV": "NODE_ENV"
+}
