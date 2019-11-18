@@ -41,7 +41,7 @@ const guestLinks = (
               <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="signin" />
             </div>
             <p className="btn-text">
-              <b>Log in with Google</b>
+              <b>Log in with Google - Review app</b>
             </p>
           </div>
         </a>
