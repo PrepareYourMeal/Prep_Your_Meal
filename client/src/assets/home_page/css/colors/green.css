@@ -1,9 +1,5 @@
 /* ------------------------------------------------------------------- */
-<<<<<<< Updated upstream
 /* Green #2F475B
-=======
-/* Green #8dc63f
->>>>>>> Stashed changes
 ---------------------------------------------------------------------- */
 
 #current,
@@ -62,11 +58,7 @@ a.blockTitle:hover,
 .pagination .current,
 .pagination ul li a:hover,
 .pagination-next-prev ul li a:hover,
-<<<<<<< Updated upstream
 .highlight.color { background: #2F475B; }
-=======
-.highlight.color { background: #8dc63f; }
->>>>>>> Stashed changes
 
 
 .author-box .title,
@@ -79,19 +71,10 @@ a.adv-search-btn:hover,
 .list-1.color li:before,
 .list-2.color li:before,
 .list-3.color li:before,
-<<<<<<< Updated upstream
 .list-4.color li:before { color: #2F475B; }
 
 .rsDefaultInv .rsThumb.rsNavSelected {
 	-webkit-box-shadow: inset 0px -1px 0px 0px rgba(50, 50, 50, 0.12), 1px 0px 0px 0px #2F475B;
 	-moz-box-shadow: inset 0px -1px 0px 0px rgba(50, 50, 50, 0.12), 1px 0px 0px 0px #2F475B;
 	box-shadow: inset 0px -1px 0px 0px rgba(50, 50, 50, 0.12), 1px 0px 0px 0px #2F475B;
-=======
-.list-4.color li:before { color: #8dc63f; }
-
-.rsDefaultInv .rsThumb.rsNavSelected {
-	-webkit-box-shadow: inset 0px -1px 0px 0px rgba(50, 50, 50, 0.12), 1px 0px 0px 0px #8dc63f;
-	-moz-box-shadow: inset 0px -1px 0px 0px rgba(50, 50, 50, 0.12), 1px 0px 0px 0px #8dc63f;
-	box-shadow: inset 0px -1px 0px 0px rgba(50, 50, 50, 0.12), 1px 0px 0px 0px #8dc63f;
->>>>>>> Stashed changes
 }

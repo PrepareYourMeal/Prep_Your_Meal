@@ -1,13 +1,3 @@
-<<<<<<< Updated upstream
-=======
-/*
-* Author: Vasterad
-* Template: Chow
-* URL: http://themeforest.net/user/Vasterad/
-*/
-
-
->>>>>>> Stashed changes
 /* ------------------------------------------------------------------- */
 /* Import Section
 ---------------------------------------------------------------------- */
@@ -4375,20 +4365,12 @@ ul.share-post li a.rate-recipe {
 
 /* Footer
 ---------------------------------------------------------------------- */
-<<<<<<< Updated upstream
 /* #footer {
-=======
-#footer {
->>>>>>> Stashed changes
 	background: #333333;
 	color: #b8b8b8;
 	padding: 35px 0 40px 0;
 	margin: 0;
-<<<<<<< Updated upstream
 } */
-=======
-}
->>>>>>> Stashed changes
 
 #footer .headline {
 	font-size: 16px;
@@ -4405,19 +4387,11 @@ ul.share-post li a.rate-recipe {
 
 /* Bottom Footer
 ------------------------------------- */
-<<<<<<< Updated upstream
 /* #footer-bottom {
 	background: #2a2a2a;
 	color: #b0b0b0;
 	padding: 18px 0;
 } */
-=======
-#footer-bottom {
-	background: #2a2a2a;
-	color: #b0b0b0;
-	padding: 18px 0;
-}
->>>>>>> Stashed changes
 
 #footer-bottom a {
 	color: #eee;
@@ -5650,11 +5624,7 @@ img.mfp-img {
 
 /* Print Button */
 a.print {
-<<<<<<< Updated upstream
 	background-color: #2F475B;
-=======
-	background-color: #808080;
->>>>>>> Stashed changes
 	color: #fff;
 	font-size: 12px;
 	font-weight: 700;
@@ -5757,7 +5727,7 @@ a.print i { font-size: 14px; margin-right: 2px; }
 ------------------------------------- */
 ol.directions {
 	list-style-type: none;
-	list-style-type: decimal !ie; /*IE 7- hack*/
+	list-style-type: decimal; /*IE 7- hack*/
 	margin: 15px 0 0 34px;
 	padding: 0;
 	counter-reset: li-counter;

@@ -131,12 +131,7 @@ class RecipeDetails extends Component {
                   </a>
                   <div className="clearfix" />
                 </section>
-<<<<<<< Updated upstream
-              
-                {/* Ingredients */}
-=======
                 
->>>>>>> Stashed changes
                 <h3>Ingredients</h3>
 
                 <ul className="ingredients">

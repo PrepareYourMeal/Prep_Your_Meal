@@ -7,11 +7,7 @@ const profile = require('./routes/api/profile');
 const recipes = require('./routes/api/recipes');
 const ingredients = require('./routes/api/ingredients');
 const bodyParser = require("body-parser");
-<<<<<<< Updated upstream
-const cors = require("cors");
-=======
 const cors = require("cors")
->>>>>>> Stashed changes
 const passport = require("passport");
 const cookieSession = require("cookie-session");
 const cookieParser = require("cookie-parser");

@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Collapse } from 'reactstrap';
-<<<<<<< Updated upstream
-=======
-import { Container } from 'reactstrap';
->>>>>>> Stashed changes
 
 
 const NavMenuContent = (props) => {
@@ -36,23 +32,12 @@ const NavMenuContent = (props) => {
                     Seasonal
                 </Link>
             </li>
-<<<<<<< Updated upstream
-
-{/*          <li className="has-submenu">
-                <Link to="/bob" className="side-nav-link-ref">
-                    <i className="mdi mdi-leaf"></i>
-                    Bob
-                </Link>
-            </li>
-*/}
-=======
             <li className="has-submenu">
                 <Link to="/planner" className="side-nav-link-ref">
                     <i className="mdi mdi-file-document-box-multiple"></i>
                     Planner
                 </Link>
             </li>
->>>>>>> Stashed changes
         </ul>
     </React.Fragment>
 }
