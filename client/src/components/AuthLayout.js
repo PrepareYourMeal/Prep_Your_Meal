@@ -34,6 +34,7 @@ class AuthLayout extends Component {
         return (
             <div className="app">
                 <header id="topnav">
+                    
                     <Suspense fallback={loading()}>
                         <Topbar rightSidebarToggle={this.toggleRightSidebar} menuToggle={this.toggleMenu} isMenuOpened={this.state.isMenuOpened} {...this.props} />
                         <Navbar isMenuOpened={this.state.isMenuOpened} {...this.props} />

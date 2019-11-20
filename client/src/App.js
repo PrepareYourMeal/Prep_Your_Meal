@@ -13,7 +13,7 @@ import './assets/scss/DefaultTheme.scss';
 
 const loading = () => <div></div>
 
-//all layouts
+//non authorizatin layout
 const NonAuthLayout = Loadable({
   loader: () => import('./components/NonAuthLayout'),
   render(loaded, props) {
@@ -23,6 +23,7 @@ const NonAuthLayout = Loadable({
   loading
 });
 
+//authorization layout
 const AuthLayout = Loadable({
   loader: () => import('./components/AuthLayout'),
   render(loaded, props) {
@@ -32,6 +33,7 @@ const AuthLayout = Loadable({
   loading
 });
 
+//test api
 setupTest();
 
 const withLayout = (WrappedComponent) => {
@@ -50,12 +52,6 @@ class App extends Component {
   getLayout = () => {
     return isUserAuthenticated() ? AuthLayout : NonAuthLayout;
   }
-
-  state = {
-    recipes: []
-  }
-
-
   render() {
     return (
       // rendering the router with layout

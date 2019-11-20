@@ -96,6 +96,9 @@ class Login extends Component {
                                                     <Button color="primary" className="btn-block">Log In</Button>
                                                 </FormGroup>
 
+                                                <FormGroup>
+                                                    <Button color="success" className="btn-block"> <i class="fab fa-google"></i>  Login with Google</Button>
+                                                </FormGroup>
                                             </AvForm>
                                         </CardBody>
                                     </Card>
