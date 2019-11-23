@@ -3120,10 +3120,13 @@ figure.image-left figcaption{
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	padding-right: 44px;
+
 }
 
 img.rsImg {
-	max-width: none;
+	width: 500;
+    width: 860px;
+    height: 550px;
 }
 
 /* .grab-cursor { cursor:url(grab.png) 8 8, move;  } */
@@ -3493,7 +3496,7 @@ a.blockTitle:hover { background: #808080; }
 }
 
 .recipe-box-content {
-	background-color: #f8f8f8;
+	background-color: #e5e7e8;
 	padding: 20px 25px;
 }
 
@@ -3501,7 +3504,7 @@ a.blockTitle:hover { background: #808080; }
 	font-size: 19px;
 	line-height: 24px;
 	font-family: "Arvo";
-	border-bottom: 1px solid #e5e5e5;
+	border-bottom: 1px solid #F04B4C;
 	margin: 0 0 10px 0;
 	padding: 0 0 15px 0;
 }
@@ -3656,17 +3659,22 @@ a.blockTitle:hover { background: #808080; }
 
 /* Recipes List Style
 ------------------------------------*/
+.hide-excess{
+	text-overflow: ellipsis;
+}
+
 .list-style .recipe-box.columns {
 	width: 100% !important;
 	position: relative;
 }
 
 .list-style .recipe-box-content h3 {
-	font-size: 22px;
-	line-height: 26px;
+	font-size: 10px !important;
+	line-height: 22px;
 	margin: 0;
 	padding: 0 0 13px 0;
 	border-bottom: none;
+	
 }
 
 .list-style .recipe-box-content p {
@@ -3678,7 +3686,7 @@ a.blockTitle:hover { background: #808080; }
 .list-style .recipe-box-content h3 a {
 	color: #606060;
 	display: block;
-	line-height: 28px;
+	line-height: 25px;
 }
 
 .list-style .thumbnail-holder { float: left; position: absolute; }

@@ -8,7 +8,9 @@ import {
     REGISTER_USER_FAILED,
     FORGET_PASSWORD,
     FORGET_PASSWORD_SUCCESS,
-    FORGET_PASSWORD_FAILED
+    FORGET_PASSWORD_FAILED,
+    GOOGLE_USER_LOGIN
+
 } from '../../constants/actionTypes';
 
 type AuthAction = { type: string, payload: {} | string };
@@ -61,4 +63,10 @@ export const forgetPasswordSuccess = (passwordResetStatus: string): AuthAction =
 export const forgetPasswordFailed = (error: string): AuthAction => ({
     type: FORGET_PASSWORD_FAILED,
     payload: error
+});
+
+
+export const googleLoginUser = (userName: string, userPic: string, gLogined: Boolean): AuthAction => ({
+    type: GOOGLE_USER_LOGIN,
+    payload: { userName, userPic, gLogined}
 });

@@ -27,11 +27,11 @@ const Register = React.lazy(() => import('./pages/account/Register'));
 const ConfirmAccount = React.lazy(() => import('./pages/account/Confirm'));
 
 
-export const PrivateRoute = ({ component: Component, handleLogout, isAuthenticated, ...rest }) => (
+export const PrivateRoute = ({ component: Component, handleLogout, ...rest }) => (
   <Route
       {...rest}
       render={props => 
-      localStorage.getItem("accessJWT") && isAuthenticated === true ? (
+      localStorage.getItem("accessJWT") ? (
           <Component {...props} handleLogout={handleLogout}/>
       ) : (
           <Redirect
@@ -54,7 +54,7 @@ const routes = [
   { path: '/forget-password', name: 'Forget Password', component: ForgetPassword, route: Route },
   { path: '/register', name: 'Register', component: Register, route: Route },
   { path: '/confirm', name: 'Confirm', component: ConfirmAccount, route: Route },
-  { path: '/home', name: 'Home', component: Home, route: Route },
+  { path: '/home', name: 'Home', component: Home, route: PrivateRoute },
 
   // other pages
   { path: '/dashboard', name: 'Dashboard', component: Dashboard, route: Route, title: 'Dashboard' },

@@ -8,13 +8,18 @@ import {
     REGISTER_USER_FAILED,
     FORGET_PASSWORD,
     FORGET_PASSWORD_SUCCESS,
-    FORGET_PASSWORD_FAILED
+    FORGET_PASSWORD_FAILED,
+    GOOGLE_USER_LOGIN
+
 } from '../../constants/actionTypes';
 
 import { getLoggedInUser } from '../../helpers/authUtils';
 
 const INIT_STATE = {
     user: getLoggedInUser(),
+    gUserName: 'Mystery Diner',
+    gUserPic: '',
+    gLogined: false,
     loading: false
 };
 
@@ -41,9 +46,11 @@ const Auth = (state:State = INIT_STATE, action: AuthAction) => {
             return { ...state, loading: true };
         case FORGET_PASSWORD_SUCCESS:
             return { ...state, passwordResetStatus: action.payload, loading: false, error: null };
-        case FORGET_PASSWORD_FAILED:
-            return { ...state, error: action.payload, loading: false };
-        default: return { ...state };
+        case GOOGLE_USER_LOGIN: 
+            const userInfo = action.payload; console.log(action.payload)
+            const {userName, userPic, gLogined} = userInfo;            
+            return { ...state, gUserName: userName, gUserPic: userPic, gLogined: gLogined, loading: false, error: null }; 
+        default: return { ...state, loading: false}
     }
 }
 

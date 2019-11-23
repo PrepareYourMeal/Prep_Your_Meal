@@ -3,7 +3,42 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Collapse } from 'reactstrap';
 
-
+const authNav = (
+    <ul>
+      <li className="has-submenu">
+                <Link to="/home" className="side-nav-link-ref">
+                    <i className="mdi mdi-fridge"></i>
+                    Home
+                </Link>
+            </li>
+      <li className="has-submenu">
+                <Link to="/recipes" className="side-nav-link-ref">
+                    <i className="mdi mdi-book-open-page-variant"></i>
+                    Recipes
+                </Link>
+            </li>
+    </ul>
+  );
+  
+  const guestNav = (
+    <ul>
+      <li>
+        <div className="google-btn-container">
+          <a href="/auth/google">
+            <div className="google-btn">
+              <div className="google-icon-wrapper">
+                <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="signin" />
+              </div>
+              <p className="btn-text">
+                <b>Log in with Google</b>
+              </p>
+            </div>
+          </a>
+        </div>
+      </li>
+    </ul>
+  )
+  
 const NavMenuContent = (props) => {
 
     return <React.Fragment>
@@ -17,7 +52,7 @@ const NavMenuContent = (props) => {
             <li className="has-submenu">
                 <Link to="/recipes" className="side-nav-link-ref">
                     <i className="mdi mdi-book-open-page-variant"></i>
-                    My Recipes
+                    Recipes
                 </Link>
             </li>
             <li className="has-submenu">

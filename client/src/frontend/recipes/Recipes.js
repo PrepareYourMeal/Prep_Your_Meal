@@ -28,7 +28,7 @@ import RecipeDetails from './RecipeDetails';
 import queryString from 'query-string';
 
 
-class Recipes extends Component {
+class Recipes2 extends Component {
 
     constructor(props) {
         super(props);
@@ -261,4 +261,4 @@ class Recipes extends Component {
 
 
 
-export default Recipes;
+export default Recipes2;

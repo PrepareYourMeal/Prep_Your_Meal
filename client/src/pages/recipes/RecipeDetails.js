@@ -101,7 +101,7 @@ class RecipeDetails extends Component {
                   </div>
                 </section>
                 {/* Slider */}
-                <div className="recipeSlider rsDefault">
+                <div>
                   <img
                     itemProp="image"
                     className="rsImg" 
@@ -120,18 +120,20 @@ class RecipeDetails extends Component {
                       Prep Time: <strong itemProp="prepTime"> {this.state.activeRecipe.recipe ? this.state.activeRecipe.recipe.readyInMinutes : "readyInMinutes"} mins</strong>
                     </li>
                     <li>
-                      Cooking: <strong itemProp="cookTime">{this.state.activeRecipe.recipe ? this.state.activeRecipe.recipe.preparationMinutes : "preparationMinutes"} mins</strong>
+                      Cooking Time: <strong itemProp="cookTime">{this.state.activeRecipe.recipe ? this.state.activeRecipe.recipe.preparationMinutes : "preparationMinutes"} mins</strong>
                     </li>
-                    <li>
+                    {/* <li>
                       Calories: <strong itemProp="calories">632 kcal</strong>
-                    </li>
+                    </li> */}
                   </ul>
-                  <a href="#" className="print">
-                    <i className="fa fa-print" /> Print
+
+                  <a href="javascript:window.print()" className="print">
+                    <i className="fa fa-print"  /> Print
                   </a>
                   <div className="clearfix" />
                 </section>
-                
+                <div className="margin-bottom-40"></div>
+
                 <h3>Ingredients</h3>
 
                 <ul className="ingredients">
