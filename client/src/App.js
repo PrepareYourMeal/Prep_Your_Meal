@@ -1,99 +1,147 @@
-import React, { Fragment, Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './assets/scss/DefaultTheme.scss';
-import Topbar from './frontend/Topbar';
-import Home from './frontend/Home';
-import Landing from './frontend/Landing';
-import Navbar from './frontend/Navbar';
-import Alert from './frontend/Alert';
-import store from './store';
-import { PrivateRoute } from './routing/PrivateRoute';
-import Recipes from './frontend/recipes/Recipes';
-import { loadUser } from './actions/authActions';
-import setAuthToken from './utils/setAuthToken';
-import CreateProfile from './frontend/profile/CreateProfile';
-import { Provider } from 'react-redux';
-import queryString from "query-string";
+import React, { useState, useEffect } from 'react';
+import Posts from './components/Posts';
+import Pagination from './components/Pagination';
 import axios from 'axios';
-import './assets/scss/DefaultTheme.scss';
+import './App.css';
 
-// if (localStorage.token) {
-//   setAuthToken(localStorage.token);
-// }
-class App extends Component {
+const App = () => {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(10);
 
-  // getLayout = () => {
-  //   return isUserAuthenticated() ? AuthLayout : NonAuthLayout;
-  // }
-  constructor() {
-    super();
-    this.state = {
-      user: null,
-      isAuthenticated: false,
-    }
-    // this.authenticateUser.bind(this)
-  }
+  useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      const res = await axios.get('http://localhost:5000/api/recipes?size=12');
+      setPosts(res.data);
+      setLoading(false);
+    };
 
-  authenticateUser = (userData) => {
-    this.setState({isAuthenticated: true, user: userData});
-  };
+    fetchPosts();
+  }, []);
 
-  handleLogout = () => {
-    this.setState({isAuthenticated: false, user: null});
-  };
+  // Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  // async componentDidMount() {
-  //   // let query = queryString.parse(this.props.location.search);
-  //   if (this.props.location.search) {
-  //     let query = queryString.parse(this.props.location.search);
-  //     if (query.token) {
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  return (
+    <div className='container mt-5'>
+      <h1 className='text-primary mb-3'>Recipes</h1>
+      <Posts posts={currentPosts} loading={loading} />
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={posts.length}
+        paginate={paginate}
+      />
+    </div>
+  );
+};
+
+export default App;
+
+
+
+// import React, { Fragment, Component } from 'react';
+// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// import './assets/scss/DefaultTheme.scss';
+// import Topbar from './frontend/Topbar';
+// import Home from './frontend/Home';
+// import Landing from './frontend/Landing';
+// import Navbar from './frontend/Navbar';
+// import Alert from './frontend/Alert';
+// import store from './store';
+// import { PrivateRoute } from './routing/PrivateRoute';
+// import Recipes from './frontend/recipes/Recipes';
+// import { loadUser } from './actions/authActions';
+// import setAuthToken from './utils/setAuthToken';
+// import CreateProfile from './frontend/profile/CreateProfile';
+// import { Provider } from 'react-redux';
+// import queryString from "query-string";
+// import axios from 'axios';
+// import './assets/scss/DefaultTheme.scss';
+
+// // if (localStorage.token) {
+// //   setAuthToken(localStorage.token);
+// // }
+// class App extends Component {
+
+//   // getLayout = () => {
+//   //   return isUserAuthenticated() ? AuthLayout : NonAuthLayout;
+//   // }
+//   constructor() {
+//     super();
+//     this.state = {
+//       user: null,
+//       isAuthenticated: false,
+//     }
+//     // this.authenticateUser.bind(this)
+//   }
+
+//   authenticateUser = (userData) => {
+//     this.setState({isAuthenticated: true, user: userData});
+//   };
+
+//   handleLogout = () => {
+//     this.setState({isAuthenticated: false, user: null});
+//   };
+
+//   // async componentDidMount() {
+//   //   // let query = queryString.parse(this.props.location.search);
+//   //   if (this.props.location.search) {
+//   //     let query = queryString.parse(this.props.location.search);
+//   //     if (query.token) {
       
-  //       let userId = query.userId;
-  //       let name = query.name;
-  //       let token = query.token;
-  //       window.localStorage.setItem("accessJWT", token);
-  //       const user = await axios.get(`/api/users/${userId}`, {withCredentials: true});
-  //       this.setState({ user: user, isAuthenticated: true, name: name });
-  //     }
+//   //       let userId = query.userId;
+//   //       let name = query.name;
+//   //       let token = query.token;
+//   //       window.localStorage.setItem("accessJWT", token);
+//   //       const user = await axios.get(`/api/users/${userId}`, {withCredentials: true});
+//   //       this.setState({ user: user, isAuthenticated: true, name: name });
+//   //     }
 
-  //   }
-  // }
+//   //   }
+//   // }
 
 
-  render() {
-    return (
-      // rendering the router with layout
+//   render() {
+//     return (
+//       // rendering the router with layout
 
-      <Router>
-        <Fragment>
-          <div className="App">
-          <Topbar authenticate={this.authenticateUser} isAuthenticated={this.state.isAuthenticated} />
+//       <Router>
+//         <Fragment>
+//           <div className="App">
+//           <Topbar authenticate={this.authenticateUser} isAuthenticated={this.state.isAuthenticated} />
 
-          {/* <Recipes></Recipes>
-          <Home></Home> */}
+//           {/* <Recipes></Recipes>
+//           <Home></Home> */}
         
-        {/* <section className="container">
-          <Navbar />
-        </section> */}
+//         {/* <section className="container">
+//           <Navbar />
+//         </section> */}
         
         
         
-        <Switch>
-          <Route exact path='/' component={Recipes} />
-          <Route exact path="/home" render={(props) => <Home {...props} authenticate={this.authenticateUser.bind(this)}></Home>}/>
-        </Switch>
+//         <Switch>
+//           <Route exact path='/' component={Recipes} />
+//           <Route exact path="/home" render={(props) => <Home {...props} authenticate={this.authenticateUser.bind(this)}></Home>}/>
+//         </Switch>
         
-        {/* </section> */}
+//         {/* </section> */}
 
-          </div>
+//           </div>
           
 
-        </Fragment>
-      </Router>
+//         </Fragment>
+//       </Router>
 
-    );
-  }
-}
+//     );
+//   }
+// }
 
 // const App = () => {
 //   useEffect(() => {
@@ -123,7 +171,7 @@ class App extends Component {
 //   );
 // }
 
-export default App;
+// export default App;
 
 
 
