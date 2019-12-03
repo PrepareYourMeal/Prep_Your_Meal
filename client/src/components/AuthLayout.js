@@ -20,8 +20,16 @@ class AuthLayout extends Component {
 
     signOut(e) {
         e.preventDefault();
+        this.props.logout();
         this.props.history.push("/login");
     }
+
+    handleLogout = () => {
+      this.props.logout();
+      console.log("THIS IS LOGGING OUT")
+      console.log(this.props)
+      this.props.history.push("/login");
+    };
 
     toggleMenu = (e) => {
         e.preventDefault();
@@ -34,9 +42,15 @@ class AuthLayout extends Component {
         return (
             <div className="app">
                 <header id="topnav">
-                    
+
                     <Suspense fallback={loading()}>
-                        <Topbar rightSidebarToggle={this.toggleRightSidebar} menuToggle={this.toggleMenu} isMenuOpened={this.state.isMenuOpened} {...this.props} />
+                        <Topbar
+                        signOut={this.handleLogout}
+                        rightSidebarToggle={this.toggleRightSidebar}
+                        menuToggle={this.toggleMenu}
+                        isMenuOpened={this.state.isMenuOpened} {...this.props}
+                        />
+
                         <Navbar isMenuOpened={this.state.isMenuOpened} {...this.props} />
                     </Suspense>
                 </header>
@@ -50,7 +64,7 @@ class AuthLayout extends Component {
                 </div>
 
                 <Footer />
-              
+
             </div>
         );
     }

@@ -49,9 +49,26 @@ const withLayout = (WrappedComponent) => {
 
 class App extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      isBobAuthenticated: false,
+    }
+  }
+
   getLayout = () => {
     return isUserAuthenticated() ? AuthLayout : NonAuthLayout;
+    //return AuthLayout;
   }
+
+  authenticateUser = () => {
+    this.setState({isBobAuthenticated: true});
+  };
+
+  handleLogout = () => {
+    this.setState({isBobAuthenticated: false});
+  };
+
   render() {
     return (
       // rendering the router with layout
@@ -64,12 +81,24 @@ class App extends Component {
                 path={route.path}
                 exact={route.exact}
                 roles={route.roles}
+                authed={this.state.isBobAuthenticated}
                 component={withLayout(props => {
                   const Layout = this.getLayout();
                   return (
                     <Suspense fallback={loading()}>
-                      <Layout {...props} title={route.title}>
-                        <route.component {...props} />
+                      <Layout {...props}
+                      title={route.title}
+                      authenticate={this.authenticateUser}
+                      authed={this.state.isBobAuthenticated}
+                      logout={this.handleLogout}
+
+                      >
+                        <route.component
+                        authenticate={this.authenticateUser}
+                        authed={this.state.isBobAuthenticated}
+                        logout={this.handleLogout}
+
+                        {...props} />
                       </Layout>
                     </Suspense>
                   );

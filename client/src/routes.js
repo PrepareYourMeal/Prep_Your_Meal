@@ -22,11 +22,12 @@ const Register = React.lazy(() => import('./pages/account/Register'));
 const ConfirmAccount = React.lazy(() => import('./pages/account/Confirm'));
 
 
-export const PrivateRoute = ({ component: Component, handleLogout, isAuthenticated, ...rest }) => (
+export const PrivateRoute = ({ component: Component, authed, handleLogout, isAuthenticated, ...rest }) => (
   <Route
       {...rest}
-      render={props => 
-      localStorage.getItem("accessJWT") && isAuthenticated === true ? (
+      render={props =>
+    //localStorage.getItem("accessJWT") && isAuthenticated === true ? (
+      window.localStorage.getItem("accessJWT") && authed === true ? (
           <Component {...props} handleLogout={handleLogout}/>
       ) : (
           <Redirect
@@ -62,16 +63,16 @@ const routes = [
   { path: '/about', name: 'About Us', component: About, route: Route, title: 'About Us' },
 
   { path: '/favorites', name: 'Favorites', component: Favorites, route: Route, title: 'Favorites' },
-  { path: '/ingredients', name: 'Seasonal', component: Ingredients, route: Route, title: 'Seasonal' },
+  { path: '/ingredients', name: 'Seasonal', component: Ingredients, route: PrivateRoute, title: 'Seasonal' },
   { path: '/profile', name: 'Profile', component: Profile, route: Route, title: 'Profile' },
-  { path: '/planner', name: 'Planner', component: Planner, route: Route, title: 'Planner' },
+  { path: '/planner', name: 'Planner', component: Planner, route: PrivateRoute, title: 'Planner' },
   {
     path: "/",
     exact: true,
     component: () => <Redirect to="/login" />,
     route: Route
   },
-  
+
 ]
 
 export { routes };

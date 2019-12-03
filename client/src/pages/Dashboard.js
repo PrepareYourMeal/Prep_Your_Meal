@@ -37,13 +37,14 @@ class DefaultDashboard extends Component {
                 console.log(data)
                 this.setState({ user: data })
                 console.log(this.state.user)
+                this.props.authenticate();
                 this.props.history.push('/dashboard');
             })
             .catch((e) => {
                 console.log(e)
             })
         }
-        
+
         console.log(document.cookie);
         console.log("1")
         let token = window.localStorage.getItem('accessJWT')
@@ -102,8 +103,7 @@ class DefaultDashboard extends Component {
         const url = `/api/users/${token}/inventory/${ingi_id}`
         axios.delete(url, { withCredentials: true })
         .then(r => {
-            
-            let inventory = this.state.inventory;  
+            let inventory = this.state.inventory;
             const removeIndex = inventory.map(item => item.spoon_id).indexOf(ingi_id);
             inventory.splice(removeIndex, 1);
             this.setState({ inventory: inventory });
@@ -112,13 +112,12 @@ class DefaultDashboard extends Component {
         })
         .catch(e => console.log(e))
     }
-    
     removeFavourite(rec_id) {
         let token = window.localStorage.getItem('accessJWT')
         const url = `/api/users/${token}/favourites/${rec_id}`
         axios.delete(url, { withCredentials: true })
         .then(r => {
-            let favourites = this.state.favourites;  
+            let favourites = this.state.favourites;
             const removeIndex = favourites.map(item => item.spoon_id).indexOf(rec_id);
             favourites.splice(removeIndex, 1);
             this.setState({ favourites: favourites });
@@ -209,7 +208,7 @@ class DefaultDashboard extends Component {
                                 </Card>
                                 </Col>
                             ))}
-                        
+
                         </Row>
                         </Col>
                     </Row>

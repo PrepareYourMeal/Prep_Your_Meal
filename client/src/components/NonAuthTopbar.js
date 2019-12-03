@@ -22,9 +22,17 @@ class NonAuthTopbar extends Component {
 
 renderRedirect = () => {
     if (this.state.redirect) {
+      this.props.logout();
       return <Redirect to='/login' />
     }
   }
+
+
+  logOut = () => {
+    window.localStorage.clear();
+    this.props.logout();
+    //this.setState(authLayoutState: false);
+  };
 
   render() {
     return (
@@ -59,8 +67,8 @@ renderRedirect = () => {
               </li>
 
               {/*Logout*/}
-              <li className="dropdown notification-list"> 
-              <Link className="btn btn-link nav-link right-bar-toggle waves-effect waves-light" to="/login"><i className="fe-log-in noti-icon"></i></Link>
+              <li className="dropdown notification-list">
+              <Link className="btn btn-link nav-link right-bar-toggle waves-effect waves-light" onClick={this.logOut} to="/login"><i className="fe-log-in noti-icon"></i></Link>
               </li>
             </ul>
 
@@ -83,4 +91,3 @@ renderRedirect = () => {
 }
 
 export default connect()(NonAuthTopbar);
-

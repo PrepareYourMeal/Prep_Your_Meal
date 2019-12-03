@@ -14,7 +14,16 @@ class Topbar extends Component {
   }
 
 
+  logOut = () => {
+    window.localStorage.clear();
+    this.props.signOut();
+    //this.setState(authLayoutState: false);
+  };
+
   render() {
+    console.log("THIS TOP BAR PROPS")
+console.log(this.props)
+
     return (
       <React.Fragment>
         <div className="navbar-custom">
@@ -22,7 +31,7 @@ class Topbar extends Component {
             <ul className="list-unstyled topnav-menu float-right mb-0">
 
               <li className="dropdown notification-list">
-                <Link className={classNames('navbar-toggle', 'nav-link', { 'open': this.props.isMenuOpened })} to="#" onClick={this.props.menuToggle}>
+                <Link className={classNames('navbar-toggle', 'nav-link', { 'open': this.props.isMenuOpened })}>
                   <div className="lines">
                     <span></span>
                     <span></span>
@@ -32,8 +41,11 @@ class Topbar extends Component {
               </li>
 
               {/*Logout*/}
-              <li className="dropdown notification-list"> 
-              <Link className="btn btn-link nav-link right-bar-toggle waves-effect waves-light" to="/logout"><i className="fe-log-out noti-icon"></i></Link>
+              <li className="dropdown notification-list">
+              <Link className="btn btn-link nav-link right-bar-toggle waves-effect waves-light" to="/login" onClick={this.logOut}>
+              <i className="fe-log-out noti-icon"></i>
+              </Link>
+
               </li>
             </ul>
 
@@ -56,4 +68,3 @@ class Topbar extends Component {
 }
 
 export default connect()(Topbar);
-
