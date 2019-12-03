@@ -10,6 +10,7 @@ const Favorites = React.lazy(() => import('./pages/favorites/Favorites'));
 const Ingredients = React.lazy(() => import('./pages/seasonal/Seasonal'));
 const Profile = React.lazy(() => import('./pages/profile/Profile'));
 const Planner = React.lazy(() => import('./pages/profile/Planner'));
+const Bob = React.lazy(() => import('./pages/bob/Bob'));
 const Home = React.lazy(() => import('./pages/Home'));
 const Help = React.lazy(() => import('./pages/information/Help'));
 const Contact = React.lazy(() => import('./pages/information/Contact'));
@@ -66,6 +67,8 @@ const routes = [
   { path: '/ingredients', name: 'Seasonal', component: Ingredients, route: PrivateRoute, title: 'Seasonal' },
   { path: '/profile', name: 'Profile', component: Profile, route: Route, title: 'Profile' },
   { path: '/planner', name: 'Planner', component: Planner, route: PrivateRoute, title: 'Planner' },
+  //
+  { path: '/bob', name: 'Bob', component: Bob, route: Route, title: 'Planner' },
   {
     path: "/",
     exact: true,
